@@ -13,11 +13,20 @@ document.addEventListener('DOMContentLoaded', function () {
     weekends: false,
     allDaySlot: false,
     nowIndicator: true,
+    locale: 'de',
+    timeZone: 'UTC+2',
     minTime: '07:00:00',
     maxTime: '18:30:00',
     themeSystem: 'bootstrap',
     close: 'fa-times',
   });
+
+  var str = calendar.formatDate('19-06-2020', {
+    month: 'long',
+    year: 'numeric',
+    day: 'numeric'
+  });
+
 
   calendar.render();
 });
