@@ -15,7 +15,7 @@ $('#berufe').on('change', function() {
 });
 
 $('#klassen').on('change', function() {
-  console.log("Etwas wurde geändert");
+  console.log("Setting local storage");
   setLocalStorage();
 });
 

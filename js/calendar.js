@@ -3,28 +3,28 @@ const scheduleUrl = 'https://sandbox.gibm.ch/tafel.php';
 var calendarEl = document.getElementById('calendar');
 var events = [];
 var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: ['timeGrid', 'bootstrap'],
-    defaultView: 'timeGridWeek',
-    handleWindowResize: true,
-    height: 'auto',
-    weekends: false,
-    allDaySlot: false,
-    nowIndicator: true,
-    locale: 'de',
-    timeZone: 'UTC+2',
-    minTime: '07:00:00',
-    maxTime: '18:30:00',
-    themeSystem: 'bootstrap',
-    footer: false,
-    header: {
-      left: 'prevDate,nextDate,today',
-      center: 'title',
-      right: 'openModal,timeGridWeek,timeGridDay'
-    },
-  });
+  plugins: ['timeGrid', 'bootstrap'],
+  defaultView: 'timeGridWeek',
+  handleWindowResize: true,
+  height: 'auto',
+  weekends: false,
+  allDaySlot: false,
+  nowIndicator: true,
+  locale: 'de',
+  timeZone: 'UTC+2',
+  minTime: '07:00:00',
+  maxTime: '18:30:00',
+  themeSystem: 'bootstrap',
+  footer: false,
+  header: {
+    left: 'prevDate,nextDate,today',
+    center: 'title',
+    right: 'openModal,timeGridWeek,timeGridDay'
+  },
+});
 
 document.addEventListener('DOMContentLoaded', function something() {
-    initializeCalendar();
+  initializeCalendar();
 });
 
 function initializeCalendar() {
@@ -35,7 +35,8 @@ function initializeCalendar() {
   var week = now.format('ww-yyyy');
   function updateEvents() {
     console.log("update events")
-    $.getJSON(scheduleUrl, { klassse_id: localStorage.getItem('klassen') }, function (data) {
+    $.getJSON(scheduleUrl, { klasse_id: localStorage.getItem('class'), woche: week }, function (data) {
+      console.log("pulling data");
       for (var table of data) {
         var event = {
           title: table.tafel_longfach,
@@ -44,20 +45,27 @@ function initializeCalendar() {
           prof: table.tafel_lehrer,
           room: table.tafel_raum,
           comment: table.tafel_kommentar,
-          allDay: fale
+          allDay: false
         };
-        console.log(JSON.stringify(events,null,"    "));
+        console.log(JSON.stringify(events, null, "    "));
         events.push(event);
       }
-    }).done(function() {
-      calendar.getEvents().forEach(event.remove());
+    }).done(function () {
+     calendar.getEvents().forEach(removeEvents);
+      function removeEvents(eventObject){
+        eventObject.remove();
+      }
+
       events.forEach(event => calendar.addEvent(event));
-    });
+    })
+      .fail(function () {
+        console.log("Data fetch failed");
+      });
+
   }
   calendar.rerenderevents;
   calendar.render();
 
 }
 
- 
-  
+
