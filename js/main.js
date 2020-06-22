@@ -1,6 +1,4 @@
 const jobUrl = 'https://sandbox.gibm.ch/berufe.php';
-const scheduleUrl = 'https://sandbox.gibm.ch/tafel.php';
-
 //get data from url
 $.getJSON(jobUrl)
   //if successful return the data into $data
@@ -35,3 +33,14 @@ function getClass(klasse_id) {
       $('warningMessage').html('No Connection to Server :(');
     });
 }
+
+function setLocalStorage() {
+    
+  localStorage.setItem('job', $("#berufe option:selected").val());
+  localStorage.setItem('class', $("#klassen option:selected").val());
+
+  initializeCalendar();
+  console.log("initializeCalendar");
+
+}
+ 
