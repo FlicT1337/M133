@@ -1,5 +1,13 @@
 body {
     font-family: 'Overpass', sans-serif;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 40px 10px;
+    padding: 0 auto;
+    margin-bottom: 0 auto;
+    margin-top: 0 auto;
+}
+
+#calendar {
+    max-width: 0 auto;
+    margin: 0 auto;
+    margin-bottom: 0 auto;
 }

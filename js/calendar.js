@@ -14,7 +14,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
   timeZone: "UTC+2",
   minTime: "07:00:00",
   maxTime: "20:00:00",
-  themeSystem: "bootstrap4",
+  themeSystem: "bootstrap",
   footer: false,
   header: {
     left: "prevDate,nextDate,today",
