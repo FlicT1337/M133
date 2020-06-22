@@ -1,24 +1,24 @@
-document.addEventListener("DOMContentLoaded", function () {
-  $("#berufe").on("change", function () {
-    getClass($("#berufe option:selected").val());
+document.addEventListener('DOMContentLoaded', function () {
+  $('#myModal').modal('show');
+  $('#berufe').on('change', function () {
+    getClass($('#berufe option:selected').val());
   });
 });
 
-$("#klassen").hide();
+$('#klassen').hide();
 
-$("#berufe").on("change", function () {
-  console.log("Etwas wurde geändert");
+$('#berufe').on('change', function () {
+  console.log('Etwas wurde geändert');
   retriveClass();
 
-  $("#klassen").show();
+  $('#klassen').show();
 });
 
-$("#klassen").on("change", function () {
-  console.log("Setting local storage");
+$('#klassen').on('change', function () {
+  console.log('Setting local storage');
   setLocalStorage();
 });
 
 function retriveClass() {
-  getClass($("#berufe option:selected").val());
+  getClass($('#berufe option:selected').val());
 }
-
