@@ -9,6 +9,7 @@
   <link href='https://unpkg.com/@fullcalendar/daygrid@4.4.2/main.min.css' rel='stylesheet' />
   <link href='https://unpkg.com/@fullcalendar/timegrid@4.4.2/main.min.css' rel='stylesheet' />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap@5.0.0/main.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,23 +17,39 @@
 
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
   <title>Stundenplan</title>
 </head>
 
+<div class="container" id="1">
+  <div class="container">
+    <div class="row align-items-left">
+      <div class="col align-items-left">
+        <h3>
+          Stundenplan
+          <small class="text-muted">Modul 133 Pascal Fiechter</small>
+        </h3>
+      </div>
+    </div>
+  </div>
 
+  <div class="container">
+    <div class="row align-items-center">
+      <select class="custom-select custom-select-sm mb-3" name="berufe" id="berufe">
+        <option>Berufe</option>
+      </select>
+      <div id="warningMessage"></div>
 
+      <select class="custom-select custom-select-sm" name="klassen" id="klassen">
+      </select>
+      <div id="warningMessage"></div>
+    </div>
+  </div>
+  <br>
+  <div class="row align-items-center">
+    <div id="calendar" class="col"></div>
+  </div>
 </div>
-<h1>
-  Stundenplan
-</h1>
-<select name="berufe" id="berufe"></select>
-<div id="warningMessage"></div>
-
-<select name="klassen" id="klassen"></select>
-<div id="warningMessage"></div>
-
-<div id="calendar"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
 
