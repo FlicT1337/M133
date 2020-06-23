@@ -17,10 +17,40 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
   themeSystem: 'bootstrap',
   footer: false,
   header: {
-    left: 'prevDate,nextDate,today',
+    left: 'prevDate, today, nextDate',
     center: 'title',
-    right: 'openModal,timeGridWeek,timeGridDay',
+    right: 'openModal,timeGridWeek,timeGridDay, settings',
   },
+
+  customButtons: {
+    openModal: {
+        text: 'settings',
+        click: function () {
+            openModal();
+        }
+    },
+    nextDate: {
+        text: '->',
+        click: function () {
+            calendar.next()
+            initializeCalendar();
+        }
+    },
+    todayB: {
+        text: 'today',
+        click: function () {
+            calendar.today()
+            initializeCalendar();
+        }
+    },
+    prevDate: {
+        text: '<-',
+        click: function () {
+            calendar.prev()
+            initializeCalendar();
+        }
+    }
+},
 });
 
 window.onload = function () {
@@ -30,13 +60,11 @@ window.onload = function () {
 function initializeCalendar() {
   events = [];
   updateEvents();
-  //console.log(week);
   var now = moment(calendar.getDate());
   var week = now.format('ww-yyyy');
   function updateEvents() {
     console.log('update events');
     $.getJSON(scheduleUrl, { klasse_id: localStorage.getItem('class'), woche: week }, function (data) {
-      console.log('pulling data');
       for (var table of data) {
         var event = {
           title: table.tafel_longfach,
@@ -47,7 +75,7 @@ function initializeCalendar() {
           comment: table.tafel_kommentar,
           allDay: false,
         };
-        console.log(JSON.stringify(events, null, '    '));
+        console.log(JSON.stringify(events, null, ''));
         events.push(event);
       }
     })

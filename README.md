@@ -10,11 +10,11 @@
 
 - [ ] localStorage 
 - [ ] Settings
-- [ ] modals instead of select
-- [ ] nav Week back and forward
 - [ ] responsive
  
 ###  ✓
 - [x] calendar events
 - [x] styling 
 - [x] json request 
+- [x] nav Week back and forward
+- [x] nav Week back and forward

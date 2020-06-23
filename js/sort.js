@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
 $('#klassen').hide();
 
 $('#berufe').on('change', function () {
-  console.log('Etwas wurde geändert');
   retriveClass();
+  setLocalStorage();
 
   $('#klassen').show();
+  setLocalStorage();
 });
 
 $('#klassen').on('change', function () {
-  console.log('Setting local storage');
   setLocalStorage();
 });
 

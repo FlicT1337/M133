@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="de">
 
 <head>
 
@@ -8,15 +8,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
-
+  <!-- bootstrap css import -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
-
+  <!-- fullcalendar css import -->
   <link href='https://unpkg.com/@fullcalendar/core@4.4.2/main.min.css' rel='stylesheet' />
   <link href='https://unpkg.com/@fullcalendar/daygrid@4.4.2/main.min.css' rel='stylesheet' />
   <link href='https://unpkg.com/@fullcalendar/timegrid@4.4.2/main.min.css' rel='stylesheet' />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap@5.0.0/main.min.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap@4.4.2/main.min.css">
+  <!-- google font css import -->
   <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css" />
@@ -24,58 +24,63 @@
   <title>Stundenplan</title>
 </head>
 
-<div class="container" id="1">
+<body>
   <div class="container">
-    <div class="row align-items-left">
-      <div class="col align-items-left">
-        <h3>
-          Stundenplan
-          <small class="text-muted">Modul 133 Pascal Fiechter</small>
-        </h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="row align-items-center">
-            <select class="custom-select custom-select-sm mb-3" name="berufe" id="berufe">
-              <option>Berufe</option>
-            </select>
-            <div id="warningMessage"></div>
-
-            <select class="custom-select custom-select-sm" name="klassen" id="klassen">
-            </select>
-            <div id="warningMessage"></div>
-          </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+    <div>
+      <div class="row align-items-left">
+        <div class="col align-items-left">
+          <h3>
+            Stundenplan
+            <small class="text-muted">Modul 133 Pascal Fiechter</small>
+          </h3>
         </div>
       </div>
     </div>
+
+    <div class="container">
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row align-items-center">
+                <select class="custom-select custom-select-sm mb-3" name="berufe" id="berufe">
+                  <option>Berufe</option>
+                </select>
+                <div id="warningMessage"></div>
+
+                <select class="custom-select custom-select-sm" name="klassen" id="klassen">
+                </select>
+                <div id="warningMessage"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Bestätigen</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div id="calendar" class="col"></div>
+      </div>
+    </div>
   </div>
 
-  <div class="row align-items-center">
-    <div id="calendar" class="col"></div>
-  </div>
-
+  <!-- jquery import -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+  <!-- fullcalendario js import -->
   <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
   <script src='https://unpkg.com/@fullcalendar/core@4.4.2/main.min.js'></script>
   <script src='https://unpkg.com/@fullcalendar/daygrid@4.4.2/main.min.js'></script>
   <script src='https://unpkg.com/@fullcalendar/timegrid@4.4.2/main.min.js'></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap@5.0.0/main.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap@4.4.2/main.min.js"></script>
+  <!-- js/ import  -->
   <script src="js/sort.js"></script>
   <script src="js/main.js" async></script>
   <script src="js/calendar.js"></script>
-  </body>
+</body>
 
 </html>
