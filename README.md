@@ -8,8 +8,8 @@
 
 ### TODO
 
-- [ ] localStorage 
- - [ ] calendar entrys on week back and forward
+- [ ] localStorage  
+  - [ ] calendar entrys on week back and forward
 - [ ] Settings
 - [ ] responsive
 
