@@ -10,7 +10,7 @@
 
 - [ ] localStorage  
   - [ ] calendar entrys on week back and forward
-- [ ] Settings
+  - [ ] Settings
 - [ ] responsive
 
  
