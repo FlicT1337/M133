@@ -21,84 +21,78 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
     center: 'title',
     right: 'openModal,todayB',
   },
-
-  today: {
-    bootstrapFontAwesome: 'fas fa-cog',
-  },
-
+  //costum buttons for the calendar
   customButtons: {
     openModal: {
-        text: 'einstellungen',
-        bootstrapFontAwesome: 'fas fa-cog',
-        click: function () {
-            openModal();
-        }
+      text: 'einstellungen',
+      bootstrapFontAwesome: 'fas fa-cog',
+      click: function () {
+        $('#myModal').modal('show');
+      },
     },
     nextDate: {
-        text: '>',
-        bootstrapFontAwesome: 'fas fa-step-forward',
-        click: function () {
-            calendar.next()
-            initializeCalendar();
-        }
+      text: '>',
+      bootstrapFontAwesome: 'fas fa-step-forward',
+      click: function () {
+        calendar.next();
+        initializeCalendar();
+      },
     },
     prevDate: {
       text: '<',
       bootstrapFontAwesome: 'fas fa-step-backward',
       click: function () {
-          calendar.prev()
-          initializeCalendar();
-      }
-  },
-    todayB: {
-        text: 'today',
-        bootstrapFontAwesome: 'fas fa-calendar-day',
-        click: function () {
-            calendar.today()
-            initializeCalendar();
-        },
+        calendar.prev();
+        initializeCalendar();
+      },
     },
-},
+    todayB: {
+      text: 'today',
+      bootstrapFontAwesome: 'fas fa-calendar-day',
+      click: function () {
+        calendar.today();
+        initializeCalendar();
+      },
+    },
+  },
 });
-
+//initializes the calendar on load
 window.onload = function () {
   initializeCalendar();
 };
 
+//creats the events in the calendar
 function initializeCalendar() {
   events = [];
-  updateEvents();
   var now = moment(calendar.getDate());
   var week = now.format('ww-yyyy');
-  function updateEvents() {
-    console.log('update events');
-    $.getJSON(scheduleUrl, { klasse_id: localStorage.getItem('class'), woche: week }, function (data) {
-      for (var table of data) {
-        var event = {
-          title: table.tafel_longfach,
-          start: table.tafel_datum + 'T' + table.tafel_von,
-          end: table.tafel_datum + 'T' + table.tafel_bis,
-          prof: table.tafel_lehrer,
-          room: table.tafel_raum,
-          comment: table.tafel_kommentar,
-          allDay: false,
-        };
-        console.log(JSON.stringify(events, null, ''));
-        events.push(event);
+  const url = `${scheduleUrl}?klasse_id=${localStorage.getItem('class')}&woche=${week}`;
+  $.getJSON(url, function (data) {
+    for (var table of data) {
+      var event = {
+        title: table.tafel_longfach,
+        start: table.tafel_datum + 'T' + table.tafel_von,
+        end: table.tafel_datum + 'T' + table.tafel_bis,
+        prof: table.tafel_lehrer,
+        room: table.tafel_raum,
+        comment: table.tafel_kommentar,
+        allDay: false,
+      };
+      console.log(JSON.stringify(events, null, ''));
+      events.push(event);
+    }
+  })
+    .done(function () {
+      calendar.getEvents().forEach(removeEvents);
+      function removeEvents(eventObject) {
+        eventObject.remove();
       }
+      calendar.getEvents().forEach((event) => event.remove());
+      events.forEach((event) => calendar.addEvent(event));
     })
-      .done(function () {
-        calendar.getEvents().forEach(removeEvents);
-        function removeEvents(eventObject) {
-          eventObject.remove();
-        }
-
-        events.forEach((event) => calendar.addEvent(event));
-      })
-      .fail(function () {
-        console.log('Data fetch failed');
-      });
-  }
-
+    .fail(function () {
+      console.log('Data fetch failed');
+    });
+  //renders the calendar with the events
   calendar.render();
 }
