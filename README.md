@@ -17,4 +17,4 @@
 - [x] styling 
 - [x] json request 
 - [x] nav Week back and forward
-- [x] nav Week back and forward
+- [x] bootstrap working

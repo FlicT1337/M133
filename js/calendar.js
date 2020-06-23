@@ -17,39 +17,47 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
   themeSystem: 'bootstrap',
   footer: false,
   header: {
-    left: 'prevDate, today, nextDate',
+    left: 'prevDate, nextDate',
     center: 'title',
-    right: 'openModal,timeGridWeek,timeGridDay, settings',
+    right: 'openModal,todayB',
+  },
+
+  today: {
+    bootstrapFontAwesome: 'fas fa-cog',
   },
 
   customButtons: {
     openModal: {
-        text: 'settings',
+        text: 'einstellungen',
+        bootstrapFontAwesome: 'fas fa-cog',
         click: function () {
             openModal();
         }
     },
     nextDate: {
-        text: '->',
+        text: '>',
+        bootstrapFontAwesome: 'fas fa-step-forward',
         click: function () {
             calendar.next()
             initializeCalendar();
         }
     },
+    prevDate: {
+      text: '<',
+      bootstrapFontAwesome: 'fas fa-step-backward',
+      click: function () {
+          calendar.prev()
+          initializeCalendar();
+      }
+  },
     todayB: {
         text: 'today',
+        bootstrapFontAwesome: 'fas fa-calendar-day',
         click: function () {
             calendar.today()
             initializeCalendar();
-        }
+        },
     },
-    prevDate: {
-        text: '<-',
-        click: function () {
-            calendar.prev()
-            initializeCalendar();
-        }
-    }
 },
 });
 
