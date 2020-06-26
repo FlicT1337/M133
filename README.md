@@ -10,7 +10,8 @@
 
   
 
-- [ ] responsive
+- [ ] switch to day view when on Mobile
+- [ ] add notification when there are no events (no school)
 
  
 ###  ✓
@@ -22,3 +23,4 @@
   - [x] calendar entrys on week back and forward
   - [x] Settings
 - [x] bootstrap working
+- [x] kinda responsive
