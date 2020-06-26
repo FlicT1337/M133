@@ -21,8 +21,4 @@
 - [x] localStorage
   - [x] calendar entrys on week back and forward
   - [x] Settings
-<<<<<<< HEAD
 - [x] bootstrap working
-=======
-- [x] bootstrap working  
->>>>>>> 66a1543615c9317eaedbbe2e28a5b871bccfe9ef

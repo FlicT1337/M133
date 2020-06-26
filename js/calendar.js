@@ -59,6 +59,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 });
 //initializes the calendar on load
 window.onload = function () {
+  $('.fc-toolbar.fc-header-toolbar').addClass('row col-lg-12');
   initializeCalendar();
 };
 
