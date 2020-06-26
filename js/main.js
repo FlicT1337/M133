@@ -14,7 +14,7 @@ $.getJSON(jobUrl).done(function (data) {
 });
 //grabs klassen from the api
 function getClass(klasse_id) {
-  let klassen_url = "http://sandbox.gibm.ch/klassen.php?beruf_id=" + klasse_id;
+  let klassen_url = "https://sandbox.gibm.ch/klassen.php?beruf_id=" + klasse_id;
   $("#klassen").html("");
   $.getJSON(klassen_url).done(function (data) {
     $.each(data, function (i, klassen) {
