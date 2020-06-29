@@ -12,6 +12,7 @@
 
 - [ ] switch to day view when on Mobile
 - [ ] add notification when there are no events (no school)
+- [ ] fix github sites
 
  
 ###  ✓
